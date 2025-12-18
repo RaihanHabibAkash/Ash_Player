@@ -38,22 +38,22 @@ const SongsTable = () => {
             </TableHeader>
             <TableBody>
                 {songs.map((song) => (
-                    <TableRow key={song._id} className="hover:bg-zinc-800/50">
+                    <TableRow key={song._id} className="hover:bg-zinc-800/50 border-b-3 hover:border-green-500 group">
                         <TableCell>
-                            <img src={song.imageUrl} alt={song.title} className="size-10 rounded object-cover" />
+                            <img src={song.imageUrl} alt={song.title} className="size-10 rounded object-cover group-hover:scale-110 duration-300" />
                         </TableCell>
-                        <TableCell className="font-medium">{song.title}</TableCell>
-                        <TableCell className="font-medium">{song.artist}</TableCell>
+                        <TableCell className="font-medium text-white/80 group-hover:text-green-500">{song.title}</TableCell>
+                        <TableCell className="font-medium text-white/50 group-hover:text-white">{song.artist}</TableCell>
                         <TableCell>
-                            <span className="inline-flex items-center gap-1 text-zinc-400">
-                                <Calendar className="size-4" />
+                            <span className="inline-flex items-center gap-1 text-white/50 group-hover:text-white">
+                                <Calendar className="size-4 group-hover:text-green-500" />
                                 {song.createdAt.split("T")[0]}
                             </span>
                         </TableCell>
                         <TableCell className="text-right">
                             <div className="flex gap-2 justify-end">
                                 <Button variant="ghost" size="sm" onClick={() => deleteSong(song._id)}
-                                className="text-red-400 hover:text-red-300 hover:bg-red-400/10 cursor-pointer">
+                                className="text-red-400 hover:text-red-300 group-hover:text-green-500 hover:bg-red-400/10 cursor-pointer">
                                     <Trash2 className="size-4 cursor-pointer" />
                                 </Button>
                             </div>

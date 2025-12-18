@@ -3,8 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { useMusicStore } from "@/stores/useMusicStore";
-import { SignedIn } from "@clerk/clerk-react";
-import { HomeIcon, Library, MessageCircle } from "lucide-react";
+import { HomeIcon, Library } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,7 @@ const LeftSidebar = () => {
                                 buttonVariants(
                                     {
                                         variant: "ghost",
-                                        className: "w-full justify-start text-white hover:bg-zinc-800"
+                                        className: "w-full justify-start group text-white hover:bg-zinc-800 border-b-3 border-l-3 hover:border-green-500"
                                     }
                                 )
                             )
@@ -35,23 +34,6 @@ const LeftSidebar = () => {
                         <HomeIcon className="mr-2 size-5" />
                         <span className="hidden md:inline">Home</span>
                     </Link>
-                    
-                    {/* Chat Icon */}
-                    <SignedIn>
-                        <Link to={"/chat"} className={
-                            cn(
-                                buttonVariants(
-                                    {
-                                        variant: "ghost",
-                                        className: "w-full justify-start text-white hover:bg-zinc-800"
-                                    }
-                                )
-                            )
-                        }>
-                            <MessageCircle className="mr-2 size-5" />
-                            <span className="hidden md:inline">Messages</span>
-                        </Link>
-                    </SignedIn>
 
                 </div>
             </div>
@@ -73,14 +55,14 @@ const LeftSidebar = () => {
                             (   
                                 albums.map((album) => (
                                     <Link to={`/albums/${album._id}`} key={album._id} 
-                                    className="p-2 hover:bg-zinc-800 rounded-md flex items-center gap-3 group cursor-pointer">
+                                    className="p-2 hover:bg-zinc-800 rounded-md flex items-center gap-3 group cursor-pointer border-b-3 border-r-3 hover:border-green-500">
                                         <img src={album.imageUrl} alt="Playlist img" 
-                                        className="size-12 rounded-md flex-shrink-0 object-cover" />
+                                        className="size-12 rounded-md flex-shrink-0 object-cover group-hover:scale-110 duration-300" />
                                         <div className="flex-1 min-w-0 hidden md:block">
-                                            <p className="font-medium truncate">
+                                            <p className="font-medium truncate text-white/80 group-hover:text-green-500">
                                                 {album.title}
                                             </p>
-                                            <p className="text-sm text-zinc-400 truncate">
+                                            <p className="text-sm text-white/50 group-hover:text-white truncate">
                                                 Album • {album.artist}
                                             </p>
                                         </div>

@@ -3,12 +3,9 @@ import dotenv from "dotenv";
 import { clerkMiddleware} from "@clerk/express";
 import fileUpload from "express-fileupload";
 import path from "path"; // buldin NODE Module
-import { createServer } from "http"; // buldin NODE Module
 import fs from "fs"; // buldin NODE Module
 import cors from "cors";
 import cron from "node-cron";
-// socket.io
-import { initializeSocket } from "./lib/socket.js";
 
 // Importing Database Connection
 import { connectDB } from "./lib/db.js";
@@ -26,10 +23,6 @@ dotenv.config();
 const __dirname = path.resolve();//variable in File upload
 const app = express();
 const PORT = process.env.PORT || 4000;
-
-// For Socket.io
-const httpServer = createServer(app);
-initializeSocket(httpServer);
 
 app.use(cors(
     {
@@ -100,7 +93,7 @@ app.use((err, req, res, next) => {
 });
 
 // Lisening on Port
-httpServer.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server started on http://localhost:${PORT}`);
     connectDB();
 });

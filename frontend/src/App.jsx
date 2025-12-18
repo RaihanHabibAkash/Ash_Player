@@ -3,7 +3,6 @@ import HomePage from "./pages/home/HomePage.jsx";
 import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage.jsx";
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
 import MainLayout from "./layout/MainLayout.jsx";
-import ChatPage from "./pages/chat/ChatPage.jsx";
 import AlbumPage from "./pages/album/AlbumPage.jsx";
 import AdminPage from "./pages/admin/AdminPage.jsx";
 import { Toaster } from "react-hot-toast";
@@ -20,7 +19,6 @@ function App() {
         <Route path="/admin" element={ <AdminPage /> } />
         <Route element={ <MainLayout/> } >
           <Route path="/" element={ <HomePage /> } />
-          <Route path="/chat" element={ <ChatPage /> } />
           <Route path="/albums/:albumId" element={ <AlbumPage /> } />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
