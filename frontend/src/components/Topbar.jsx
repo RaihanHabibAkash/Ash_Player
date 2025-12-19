@@ -25,7 +25,10 @@ const Topbar = () => {
                         buttonVariants({ variant: "outline" })
                     )} >
                         <LayoutDashboard className="size-4 mr-2" />
-                        Admin Dashboard
+                        <p className="hidden sm:inline-flex">
+                            Admin Dashboard
+                        </p>
+                        
                     </Link>
                     )
                 }
