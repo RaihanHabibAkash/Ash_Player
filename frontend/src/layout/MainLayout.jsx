@@ -17,28 +17,43 @@ const MainLayout = () => {
         return () => window.removeEventListener("resize", checkMobile);
     },[]);
 
-    return(
-        <div className="h-screen bg-black text-white flex flex-col">
-            <ResizablePanelGroup direction="horizontal" className="flex-1 flex h-full overflow-hidden p-2">
-                {/* Not visiable, can place anywhere */}
-                <AudioPlayer />
-                 
-                {/* Left sidebar */}
-                <ResizablePanel defaultSize={isMobile ? 0 : 20} minSize={0} maxSize={30} >
-                    <LeftSidebar />
-                </ResizablePanel>
+    if(!isMobile) {
+        return(
+            <div className="h-screen bg-black text-white flex flex-col">
+                <ResizablePanelGroup direction="horizontal" className="flex-1 flex h-full overflow-hidden p-2">
+                    {/* Not visiable, can place anywhere */}
+                    <AudioPlayer />
+                    
+                    {/* Left sidebar */}
+                    <ResizablePanel defaultSize={isMobile ? 0 : 20} minSize={0} maxSize={30} >
+                        <LeftSidebar />
+                    </ResizablePanel>
 
-                <ResizableHandle className="w-2 bg-black rounded-lg transition-colors" />
+                    <ResizableHandle className="w-2 bg-black rounded-lg transition-colors" />
 
-                {/* Main content area */}
-                <ResizablePanel defaultSize={isMobile ? 100 : 80} >
-                    <Outlet />
-                </ResizablePanel>
-            </ResizablePanelGroup>
+                    {/* Main content area */}
+                    <ResizablePanel defaultSize={isMobile ? 100 : 80} >
+                        <Outlet />
+                    </ResizablePanel>
+                </ResizablePanelGroup>
 
-            <PlaybackControls />
-        </div>
-    );
+                <PlaybackControls />
+            </div>
+        );
+    } else {
+        return(
+            <div className="h-screen bg-black text-white flex flex-col">
+                    {/* Not visiable, can place anywhere */}
+                    <AudioPlayer />
+                    
+                        <Outlet />
+
+                <PlaybackControls />
+            </div>
+        );
+    }
+
+    
 };
 
 export default MainLayout;
